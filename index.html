@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake File Input</title>
+</head>
+<body>
+    <input
+        type="button"
+        value="Escolher Arquivos"
+        onclick="document.getElementById('real-input').click()"
+    />
+
+    <input
+        type="file"
+        id="real-input"
+        style="display: none;"
+        onchange="fileInput()"
+        multiple
+    />
+    <span id="files-desc">Nenhum arquivo selecionado</span>
+
+    <script>
+        function fileInput() {
+            const fileLength = document.getElementById('real-input').files.length;
+            const fileSpan = document.getElementById('files-desc');
+            if(fileLength == 0) fileSpan.innerText = 'Nenhum arquivo selecionado.';
+            else fileSpan.innerText = `${fileLength} ${fileLength > 1 ? 'arquivos' : 'arquivo'}`;
+        }
+    </script>
+</body>
+</html>
